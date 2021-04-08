@@ -1,6 +1,6 @@
 Guess the Number
 ========================================================
-A simple text-based game
+A simple text-based game.
 
 Sample Output
 ========================================================
