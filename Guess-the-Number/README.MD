@@ -41,4 +41,7 @@ if guess != number:
 
 Sample Output
 ========================================================
+
+The player’s input is marked in bold.
+
 ![Sample output Guess the Number Game](https://github.com/nihathalici/Invent-with-Python/blob/main/Guess-the-Number/screenshot_guess.PNG)
