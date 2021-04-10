@@ -51,4 +51,5 @@ while playAgain == 'yes' or playAgain == 'y':
 
 Sample Output
 ========================================================
+The player’s input is marked in bold.
 ![Sample output Dragon Realm](https://github.com/nihathalici/Invent-with-Python/blob/main/Dragon-Realm/screenshot_dragon.PNG)
