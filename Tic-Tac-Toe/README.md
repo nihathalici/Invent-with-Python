@@ -192,4 +192,4 @@ Sample Output
 
 The player’s input is marked in bold.
 
-![Sample output Guess the Number Game](https://github.com/nihathalici/Invent-with-Python/blob/main/Tic-Tac-Toe/screenshot_tic_tac_toe.PNG)
+![Sample output Tic-Tac-Toe](https://github.com/nihathalici/Invent-with-Python/blob/main/Tic-Tac-Toe/screenshot_tic_tac_toe.PNG)
