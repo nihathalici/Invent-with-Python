@@ -1,4 +1,4 @@
-Dragon Realm
+The Bagels Deduction Game
 ========================================================
 A text-based game.
 
