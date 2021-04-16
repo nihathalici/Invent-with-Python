@@ -82,4 +82,4 @@ while True:
 
 Sample Output
 ========================================================
-![Sample output Bagels Deduction Game](https://https://github.com/nihathalici/Invent-with-Python/blob/main/The-Bagels-Deduction-Game/screenshot_bagels.PNG)
+![Sample output Bagels Deduction Game](https://github.com/nihathalici/Invent-with-Python/blob/main/The-Bagels-Deduction-Game/screenshot_bagels.PNG)
