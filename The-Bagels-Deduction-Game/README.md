@@ -82,4 +82,6 @@ while True:
 
 Sample Output
 ========================================================
+The player’s input is marked in bold.
+
 ![Sample output Bagels Deduction Game](https://github.com/nihathalici/Invent-with-Python/blob/main/The-Bagels-Deduction-Game/screenshot_bagels.PNG)
