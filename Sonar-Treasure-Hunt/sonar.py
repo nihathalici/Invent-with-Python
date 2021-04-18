@@ -50,10 +50,17 @@ def drawBoard(board):
 
 
 def getRandomChests(numChests):
-    pass
+    # Create a list of chest data structures (two-item lists of x, y int coordinates).
+    chests = []
+    while len(chests) < numChests:
+        newChest = [random.randint(0, 59), random.randint(0, 14)]
+        if newChest not in chests: # Make sure a chest is not already here .
+            chests.append[newChest]
+    return chests
 
 def isOnBoard(x, y):
-    pass
+    # Return True if the coordinates are on the board; otherwise return False
+    return x >= 0 and x <= 59 and y >= 0 and y <= 14
 
 def makeMove(board, chests, x, y):
     pass
