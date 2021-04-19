@@ -63,10 +63,45 @@ def isOnBoard(x, y):
     return x >= 0 and x <= 59 and y >= 0 and y <= 14
 
 def makeMove(board, chests, x, y):
-    pass
+    # Change the board data structure with a sonar device character.
+    # Remove treasure chests from the chests lists as they are found.
+    # Return False if this is an invalid move.
+    # Otherwise, return the string of the result of this move.
+    smallestDistance = 100 # Any chest will be closer than 100.
+    for cx, cy in chests:
+        distance = math.sqrt((cx - x) * (cx - x) + (cy - y) * (cy - y))
+
+        if distance < smallestDistance: # We want the closest treasure chest.
+            smallestDistance = distance
+
+    smallestDistance = round(smallestDistance)
+
+    if smallestDistance == 0:
+        # xy is directly on a treasure chest!
+        chests.remove([x, y])
+        return 'You have found a sunken treasure chest!'
+    else:
+        if smallestDistance < 10:
+            board[x][y] = 'x'
+            return 'Sonar did not detect anything. All treasure chests out of range'
 
 def enterPlayerMove(previousMoves):
-    pass
+    # Let the player enter their move. Return a two-item list of int xy coordinates.
+    print('Where do you want to drop the next sonar device? (0-59 0-14) (or type quit)')
+    while True:
+        move = input()
+        if move.lower() == 'quit':
+            print('Thanks for playing!')
+            sys.exit()
+
+        move = move.split()
+        if len(move) == 2 and move[0].isdigit() and move[1].isdigit() and isOnBoard(int(move[0]), int(move[1])):
+            if [int(move[0]), int(move[1])] in previousMoves:
+                print('You already moved there.')
+                continue
+            return [int(move[0]), int(move[1])]
+
+        print('Enter a number from 0 to 59, a space, then a number from 0 to 14.')
 
 def showInstructions:
     pass
