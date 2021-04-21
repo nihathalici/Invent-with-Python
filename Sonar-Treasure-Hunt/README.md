@@ -227,5 +227,4 @@ while True:
 
 Sample Output
 ========================================================
-
-
+![Sample output Sonar Treasure Hunt](https://github.com/nihathalici/Invent-with-Python/blob/main/Sonar-Treasure-Hunt/screenshot_sonar.PNG)
