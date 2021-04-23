@@ -63,3 +63,5 @@ print(getTranslatedMessage(mode, message, key))
 Sample Output
 ========================================================
 
+https://github.com/nihathalici/Invent-with-Python/blob/main/Caesar-Cipher/screenshot_cipher_1.PNG
+https://github.com/nihathalici/Invent-with-Python/blob/main/Caesar-Cipher/screenshot_cipher_2.PNG
