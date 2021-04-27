@@ -1,63 +1,90 @@
-import pygame, sys
+import pygame, sys, time
 from pygame.locals import *
 
 # Set up pygame.
 pygame.init()
 
 # Set up the window.
-windowSurface = pygame.display.set_mode((500, 400), 0, 32)
-pygame.display.set_caption('Hello world!')
+WINDOWWIDTH = 400
+WINDOWHEIGHT = 400
+windowSurface = pygame.display.set_mode((WINDOWWIDTH, WINDOWHEIGHT), 0, 32)
+pygame.display.set_caption('Animation')
+
+# Set up direction variables.
+DOWNLEFT = 'downleft'
+DOWNRIGHT = 'downright'
+UPLEFT = 'upleft'
+UPRIGHT = 'upright'
+
+MOVESPEED = 4
 
 # Set up the colors.
-BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 RED = (255, 0, 0)
 GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
 
-# Set up the fonts.
-basicFont = pygame.font.SysFont(None, 48)
-
-# Set up the text.
-text = basicFont.render('Hello world!', True, WHITE, BLUE)
-textRect = text.get_rect()
-textRect.centerx = windowSurface.get_rect().centerx
-textRect.centery = windowSurface.get_rect().centery
-
-# Draw the white background onto the surface.
-windowSurface.fill(WHITE)
-
-# Draw a green polygon onto the surface.
-pygame.draw.polygon(windowSurface, GREEN, ((146, 0), (291, 106), (236, 277), (56, 277), (0, 106)))
-
-# Draw some blue lines onto the surface.
-pygame.draw.line(windowSurface, BLUE, (60, 60), (120, 60), 4)
-pygame.draw.line(windowSurface, BLUE, (120, 60), (60, 120))
-pygame.draw.line(windowSurface, BLUE, (60, 120), (120, 120), 4)
-
-# Draw a blue circle onto the surface.
-pygame.draw.circle(windowSurface, BLUE, (300, 50), 20, 0)
-
-# Draw a red ellipse onto the surface.
-pygame.draw.ellipse(windowSurface, RED, (300, 250, 40, 80), 1)
-
-# Draw the text's background rectangle onto the surface.
-pygame.draw.rect(windowSurface, RED, (textRect.left - 20, textRect.top - 20, textRect.width + 40, textRect.height + 40))
-
-# Get a pixel array of the surface.
-pixArray = pygame.PixelArray(windowSurface)
-pixArray[480][380] = BLACK
-del pixArray
-
-# Draw the text onto the surface.
-windowSurface.blit(text, textRect)
-
-# Draw the window onto the screen.
-pygame.display.update()
+# Set up the box data structure.
+b1 = {'rect':pygame.Rect(300, 80, 50, 100), 'color':RED, 'dir':UPRIGHT}
+b2 = {'rect':pygame.Rect(200, 200, 20, 20), 'color':GREEN, 'dir':UPLEFT}
+b3 = {'rect':pygame.Rect(100, 150, 60, 60), 'color':BLUE, 'dir':DOWNLEFT}
+boxes = [b1, b2, b3]
 
 # Run the game loop.
 while True:
+    # Check for the QUIT event.
     for event in pygame.event.get():
         if event.type == QUIT:
             pygame.quit()
             sys.exit()
+
+    # Draw the white background onto the surface.
+    windowSurface.fill(WHITE)
+
+    for b in boxes:
+        # Move the box data structure.
+        if b['dir'] == DOWNLEFT:
+            b['rect'].left -= MOVESPEED
+            b['rect'].top += MOVESPEED
+        if b['dir'] == DOWNRIGHT:
+            b['rect'].left += MOVESPEED
+            b['rect'].top += MOVESPEED
+        if b['dir'] == UPLEFT:
+            b['rect'].left -= MOVESPEED
+            b['rect'].top -= MOVESPEED
+        if b['dir'] == UPRIGHT:
+            b['rect'].left += MOVESPEED
+            b['rect'].top -= MOVESPEED
+
+        # Check whether the box has moved out of the window.
+        if b['rect'].top < 0:
+            # The box has moved past the top.
+            if b['dir'] == UPLEFT:
+                b['dir'] = DOWNLEFT
+            if b['dir'] == UPRIGHT:
+                b['dir'] = DOWNRIGHT
+        if b['rect'].bottom > WINDOWHEIGHT:
+            # The box has moved past the bottom.
+            if b['dir'] == DOWNLEFT:
+                b['dir'] = UPLEFT
+            if b['dir'] == DOWNRIGHT:
+                b['dir'] = UPRIGHT
+        if b['rect'].left < 0:
+            # The box has moved past the left side.
+            if b['dir'] == DOWNLEFT:
+                b['dir'] = DOWNRIGHT
+            if b['dir'] == UPLEFT:
+                b['dir'] = UPRIGHT
+        if b['rect'].right > WINDOWWIDTH:
+            # The box has moved past the right side.
+            if b['dir'] == DOWNRIGHT:
+                b['dir'] = DOWNLEFT
+            if b['dir'] == UPRIGHT:
+                b['dir'] = UPLEFT
+
+        # Draw the box onto the surface.
+        pygame.draw.rect(windowSurface, b['color'], b['rect'])
+
+    # Draw the window onto the screen.
+    pygame.display.update()
+    time.sleep(0.02)
