@@ -97,3 +97,6 @@ while True:
     time.sleep(0.02)
 
 ```
+Sample Output
+========================================================
+![Sample output Pygame Animation](https://github.com/nihathalici/Invent-with-Python/blob/main/Preparing-for-Pygame-2/screenshot_animation.PNG)
