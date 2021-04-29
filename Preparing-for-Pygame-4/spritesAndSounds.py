@@ -16,7 +16,7 @@ WHITE = (255, 255, 255)
 
 # Set up the block data structure.
 player = pygame.Rect(300, 100, 40, 40)
-playerImage= pygame.image.load('player.png')
+playerImage = pygame.image.load('player.png')
 playerStretchedImage = pygame.transform.scale(playerImage, (40, 40))
 foodImage = pygame.image.load('cherry.png')
 foods = []
@@ -49,16 +49,16 @@ while True:
             sys.exit()
         if event.type == KEYDOWN:
             # Change the keyboard variables.
-            if event.key == K_LEFT or event.key = K_a:
+            if event.key == K_LEFT or event.key == K_a:
                 moveRight = False
                 moveLeft = True
-            if event.key == K_RIGHT or event.key = K_d:
+            if event.key == K_RIGHT or event.key == K_d:
                 moveLeft = False
                 moveRight = True
-            if event.key == K_UP or event.key = K_w:
+            if event.key == K_UP or event.key == K_w:
                 moveDown = False
                 moveUp = True
-            if event.key == K_DOWN or event.key = K_s:
+            if event.key == K_DOWN or event.key == K_s:
                 moveUp = False
                 moveDown = True
         if event.type == KEYUP:
