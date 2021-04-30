@@ -7,11 +7,11 @@ TEXTCOLOR = (0, 0, 0)
 BACKGROUNDCOLOR = (255, 255, 255)
 FPS = 60
 BADDIEMINSIZE = 10
-BADDIEMAXSIZE = 40
+BADDIEMAXSIZE = 20
 BADDIEMINSPEED = 1
-BADDIEMAXSPEED = 8
-ADDNEWBADDIERATE = 6
-PLAYERMOVERATE = 5
+BADDIEMAXSPEED = 2
+ADDNEWBADDIERATE = 2
+PLAYERMOVERATE = 2
 
 def terminate():
     pygame.quit()
@@ -81,7 +81,7 @@ while True:
 
         for event in pygame.event.get():
             if event.type == QUIT:
-                terminate()
+                    terminate()
 
             if event.type == KEYDOWN:
                 if event.key == K_z:
@@ -166,7 +166,7 @@ while True:
 
         # Draw the score and top score.
         drawText('Score: %s' % (score), font, windowSurface, 10, 0)
-        drawText('Top score: %s' % (topScore), font, windowSurface, 10, 40)
+        drawText('Top Score: %s' % (topScore), font, windowSurface, 10, 40)
 
         # Draw the player's rectangle.
         windowSurface.blit(playerImage, playerRect)
@@ -180,7 +180,7 @@ while True:
         # Check if any of the baddies have hit the player.
         if playerHasHitBaddie(playerRect, baddies):
             if score > topScore:
-                topScore = score # Set new top score.
+                topScore = score # set new top score.
             break
 
         mainClock.tick(FPS)
